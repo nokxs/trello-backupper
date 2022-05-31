@@ -20,7 +20,7 @@ namespace trello_backuper.docker
                 .Build();
 
             var trigger = TriggerBuilder.Create()
-                .WithIdentity("trigger", "group")
+                .WithIdentity("myJob", "group")
                 .StartNow()
                 .WithCronSchedule(cron)
                 .ForJob("myJob", "group")
