@@ -2,9 +2,9 @@
 
 public class TrelloBoard
 {
-    public string Id { get; set; }
+    public string Id { get; set; } = "";
 
-    public string Name { get; set; }
+    public string Name { get; set; } = "";
 
-    public Uri Url { get; set; }
+    public Uri? Url { get; set; }
 }
