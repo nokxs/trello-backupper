@@ -1,0 +1,42 @@
+name: Publish Extension
+
+on:
+  # Triggers the workflow on push or pull request events but only for the main branch
+  push:
+    tags: 
+      - 'v**'
+  release:
+    types: [published]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+    
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    
+    - id: get_version
+      uses: battila7/get-version-action@v2
+
+    - run: echo "Publish version v${{ steps.get_version.outputs.version-without-v }}"
+    
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v2
+      with:
+        dotnet-version: 6.0.x
+      env:
+        NUGET_AUTH_TOKEN: ${{secrets.NUGET_KEY}}
+        
+    - name: Restore dependencies
+      run: dotnet restore
+      
+    - name: Build
+      run: dotnet build trello-backuper.cli/trello-backuper.cli.csproj --configuration Release -p:Version=${{ steps.get_version.outputs.version-without-v }}
+      
+    - name: Publish the package to GPR
+      run: dotnet nuget push trello-backuper.cli/nupkg/*.nupkg --api-key ${{secrets.NUGET_KEY}}
+      

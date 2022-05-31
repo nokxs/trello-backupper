@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32328.378
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "trello-backuper.lib", "trello-backuper.lib\trello-backuper.lib.csproj", "{61A8E72D-94EC-4EE2-9FF3-248BD881A47E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "trello-backuper.cli", "trello-backuper.cli\trello-backuper.cli.csproj", "{465AB608-DD62-4BA8-8C00-B8CC5861CADA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{61A8E72D-94EC-4EE2-9FF3-248BD881A47E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{61A8E72D-94EC-4EE2-9FF3-248BD881A47E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{61A8E72D-94EC-4EE2-9FF3-248BD881A47E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{61A8E72D-94EC-4EE2-9FF3-248BD881A47E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{465AB608-DD62-4BA8-8C00-B8CC5861CADA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{465AB608-DD62-4BA8-8C00-B8CC5861CADA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{465AB608-DD62-4BA8-8C00-B8CC5861CADA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{465AB608-DD62-4BA8-8C00-B8CC5861CADA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4EB210EA-43AB-47AC-907D-8AD720F17AFE}
+	EndGlobalSection
+EndGlobal

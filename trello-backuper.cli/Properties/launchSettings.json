@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "trello-backuper.cli": {
+      "commandName": "Project",
+      "commandLineArgs": "--app-key XXX --token XXX backup \"C:\\Temp\""
+    }
+  }
+}
