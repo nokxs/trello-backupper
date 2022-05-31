@@ -28,7 +28,6 @@ jobs:
       uses: actions/setup-dotnet@v2
       with:
         dotnet-version: 6.0.x
-        source-url: https://api.nuget.org/v3/index.json
       env:
         NUGET_AUTH_TOKEN: ${{secrets.NUGET_KEY}}
         
@@ -39,5 +38,5 @@ jobs:
       run: dotnet build trello-backuper.cli/trello-backuper.cli.csproj --configuration Release -p:Version=${{ steps.get_version.outputs.version-without-v }}
       
     - name: Publish the package to GPR
-      run: dotnet nuget push trello-backuper.cli/nupkg/*.nupkg --api-key ${{secrets.NUGET_KEY}}
+      run: dotnet nuget push trello-backuper.cli/nupkg/*.nupkg --api-key ${{secrets.NUGET_KEY}} -s https://api.nuget.org/v3/index.json
       
