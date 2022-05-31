@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "trello-backuper.lib", "trel
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "trello-backuper.cli", "trello-backuper.cli\trello-backuper.cli.csproj", "{465AB608-DD62-4BA8-8C00-B8CC5861CADA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "trello-backuper.docker", "trello-backuper.docker\trello-backuper.docker.csproj", "{3E9035F1-4A7E-45E3-B5AB-FE0C4BB93521}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{465AB608-DD62-4BA8-8C00-B8CC5861CADA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{465AB608-DD62-4BA8-8C00-B8CC5861CADA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{465AB608-DD62-4BA8-8C00-B8CC5861CADA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3E9035F1-4A7E-45E3-B5AB-FE0C4BB93521}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3E9035F1-4A7E-45E3-B5AB-FE0C4BB93521}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3E9035F1-4A7E-45E3-B5AB-FE0C4BB93521}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3E9035F1-4A7E-45E3-B5AB-FE0C4BB93521}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
