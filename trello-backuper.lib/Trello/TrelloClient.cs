@@ -85,7 +85,7 @@ public class TrelloClient
         }
     }
 
-    string GetAttachmentFilePath(TrelloAttachment trelloAttachment, string directory)
+    private static string GetAttachmentFilePath(TrelloAttachment trelloAttachment, string directory)
     {
         var path = Path.Combine(directory, trelloAttachment.FileName);
 

@@ -33,7 +33,7 @@ public class MarkdownCreator
         return cleanedUpMarkdownDocument;
     }
 
-    private string GetList(ListHolder listHolder)
+    private static string GetList(ListHolder listHolder)
     {
         var sb = new StringBuilder();
 
@@ -48,7 +48,7 @@ public class MarkdownCreator
         return sb.ToString();
     }
 
-    private string GetCard(CardHolder cardHolder)
+    private static string GetCard(CardHolder cardHolder)
     {
         var sb = new StringBuilder();
         sb.AppendLine($"### {cardHolder.Card.Name}");
@@ -94,7 +94,7 @@ public class MarkdownCreator
         return sb.ToString();
     }
 
-    private string GetComments(TrelloApiResult<TrelloCardActions> cardActions)
+    private static string GetComments(TrelloApiResult<TrelloCardActions> cardActions)
     {
         var sb = new StringBuilder();
 
@@ -110,7 +110,7 @@ public class MarkdownCreator
         return sb.ToString();
     }
 
-    private string GetAttachments(IEnumerable<TrelloAttachment> attachments)
+    private static string GetAttachments(IEnumerable<TrelloAttachment> attachments)
     {
         var sb = new StringBuilder();
 
@@ -125,7 +125,7 @@ public class MarkdownCreator
         return sb.ToString();
     }
 
-    private string GetChecklist(TrelloChecklist checklist)
+    private static string GetChecklist(TrelloChecklist checklist)
     {
         var sb = new StringBuilder();
 
@@ -155,8 +155,8 @@ public class MarkdownCreator
         sb.AppendLine("_________________________________");
         sb.AppendLine();
     }
-
-    private string RemoveMultipleBlankLines(string markdownDocument)
+    
+    private static string RemoveMultipleBlankLines(string markdownDocument)
     {
         return Regex.Replace(markdownDocument, @"(\r\n){2,}", "\r\n\r\n");
     }

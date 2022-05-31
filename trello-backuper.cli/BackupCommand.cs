@@ -64,7 +64,7 @@ public class BackupCommand
         };
     }
 
-    private void DownloadedJson(string name, string json, string targetDirectory, bool skipJsonBackup)
+    private static void DownloadedJson(string name, string json, string targetDirectory, bool skipJsonBackup)
     {
         if (skipJsonBackup || string.IsNullOrEmpty(json))
         {
