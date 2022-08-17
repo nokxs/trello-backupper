@@ -1,0 +1,13 @@
+{
+  "profiles": {
+    "Docker Compose": {
+      "commandName": "DockerCompose",
+      "composeLaunchAction": "None",
+      "composeLaunchServiceName": "trello-backuper.docker",
+      "commandVersion": "1.0",
+      "serviceActions": {
+        "trello-backuper.docker": "StartDebugging"
+      }
+    }
+  }
+}
