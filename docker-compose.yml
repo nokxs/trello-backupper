@@ -1,0 +1,10 @@
+version: '3.4'
+
+services:
+  trello-backuper.docker:
+    image: ${DOCKER_REGISTRY-}trellobackuperdocker
+    volumes:
+    - ./localBackup:/backup
+    build:
+      context: .
+      dockerfile: trello-backuper.docker/Dockerfile
