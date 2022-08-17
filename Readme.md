@@ -14,11 +14,11 @@ It is available as
 
 ## Install
 
-You can use the tool as .net tool or as docker-container, which will periodically do backups.
+You can use the tool as dotnet tool or as docker container, which will periodically do backups.
 
 ### As dotnet tool
 
-Run `dotnet tool install --global trello-backuper.cli` to install the tool globally.
+Run `dotnet tool install --global trello-backuper.cli` to install the tool globally. This requires installed [dotnet 6](https://dotnet.microsoft.com/en-us/download/dotnet/6.0).
 
 After installation, run `trello-backuper --app-key [Your App key] --token [Your token] backup [Your target directory]`. This will do
 a full backup of your trello account.

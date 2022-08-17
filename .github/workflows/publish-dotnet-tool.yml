@@ -30,7 +30,7 @@ jobs:
         NUGET_AUTH_TOKEN: ${{secrets.NUGET_KEY}}
         
     - name: Restore dependencies
-      run: dotnet restore
+      run: dotnet restore trello-backuper.cli/trello-backuper.cli.csproj
       
     - name: Build
       run: dotnet build trello-backuper.cli/trello-backuper.cli.csproj --configuration Release -p:Version=${{ steps.get_version.outputs.version-without-v }}
