@@ -18,8 +18,8 @@ jobs:
       with:
         dotnet-version: 6.0.x
     - name: Restore dependencies
-      run: dotnet restore .\trello-backupper.sln
+      run: dotnet restore trello-backupper.sln
     - name: Build
-      run: dotnet build --no-restore .\trello-backupper.sln
+      run: dotnet build --no-restore trello-backupper.sln
     - name: Test
-      run: dotnet test --no-build --verbosity normal .\trello-backupper.sln
+      run: dotnet test --no-build --verbosity normal trello-backupper.sln
