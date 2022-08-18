@@ -36,7 +36,7 @@ The docker image is available on [DockerHub](https://hub.docker.com/r/liofly/tre
 Backups get stored in `/backup` in the container. Mount it to your local disk for easy access of the backup.
 
 Save the following as `docker-compose.yml` and start it with `docker-compose up -d`. It will start a first backup immediatly and then do a backup every night at 2 AM:
-```
+```yaml
 version: '3.4'
 
 services:
