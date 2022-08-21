@@ -21,7 +21,8 @@ public class WebHookCaller
 
         try
         {
-            var finalUri = new Uri(data.TargetUri, $"?message={data.Message}");
+            var substitutedUri = data.TargetUri.AbsoluteUri.Replace("$message$", data.Message);
+            var finalUri = new Uri(substitutedUri);
             _logger.LogInformation($"Calling {finalUri} with method {data.Method}");
 
             var request = new HttpRequestMessage(data.Method, finalUri);
