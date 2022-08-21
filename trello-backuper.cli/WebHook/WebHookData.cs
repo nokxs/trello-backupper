@@ -1,4 +1,4 @@
-﻿namespace trello_backuper.cli.WebHook
+﻿namespace trello.backupper.cli.WebHook
 {
     public class WebHookData
     {

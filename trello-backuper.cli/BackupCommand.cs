@@ -1,9 +1,9 @@
 ﻿using System.CommandLine;
-using trello_backuper.cli.WebHook;
-using trello_backuper.lib;
-using trello_backuper.lib.Holder;
+using trello.backuper.lib;
+using trello.backuper.lib.Holder;
+using trello.backupper.cli.WebHook;
 
-namespace trello_backuper.cli;
+namespace trello.backupper.cli;
 
 public class BackupCommand
 {

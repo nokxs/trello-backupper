@@ -1,4 +1,4 @@
-﻿namespace trello_backuper.lib.Trello.Model;
+﻿namespace trello.backuper.lib.Trello.Model;
 
 public class TrelloChecklistItem
 {

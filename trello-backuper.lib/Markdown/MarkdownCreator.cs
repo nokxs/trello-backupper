@@ -1,10 +1,10 @@
 ﻿using System.Text;
 using System.Text.RegularExpressions;
-using trello_backuper.lib.Holder;
-using trello_backuper.lib.Trello;
-using trello_backuper.lib.Trello.Model;
+using trello.backuper.lib.Holder;
+using trello.backuper.lib.Trello;
+using trello.backuper.lib.Trello.Model;
 
-namespace trello_backuper.lib.Markdown;
+namespace trello.backuper.lib.Markdown;
 
 public class MarkdownCreator
 {

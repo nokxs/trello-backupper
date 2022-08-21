@@ -1,7 +1,7 @@
 using CronSTD;
-using trello_backuper.cli;
+using trello.backupper.cli;
 
-namespace trello_backuper.docker
+namespace trello.backupper.docker
 {
     public class Worker : BackgroundService
     {

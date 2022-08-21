@@ -1,8 +1,8 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using trello_backuper.cli;
-using trello_backuper.cli.WebHook;
-using trello_backuper.lib;
+using trello.backuper.lib;
+using trello.backupper.cli;
+using trello.backupper.cli.WebHook;
 
 var serviceCollection = new ServiceCollection();
 serviceCollection.AddLogging(configure => configure.AddConsole());

@@ -1,8 +1,8 @@
 ﻿using System.Net.Http.Headers;
 using System.Text.Json;
-using trello_backuper.lib.Trello.Model;
+using trello.backuper.lib.Trello.Model;
 
-namespace trello_backuper.lib.Trello;
+namespace trello.backuper.lib.Trello;
 
 public class TrelloClient
 {

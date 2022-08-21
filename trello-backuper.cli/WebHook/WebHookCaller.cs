@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
 
-namespace trello_backuper.cli.WebHook;
+namespace trello.backupper.cli.WebHook;
 
 public class WebHookCaller
 {

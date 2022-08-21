@@ -1,6 +1,6 @@
-﻿using trello_backuper.lib.Trello.Model;
+﻿using trello.backuper.lib.Trello.Model;
 
-namespace trello_backuper.lib.Holder;
+namespace trello.backuper.lib.Holder;
 
 public class ListHolder
 {
