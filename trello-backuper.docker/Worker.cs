@@ -9,7 +9,7 @@ namespace trello_backuper.docker
         private readonly ILogger<Worker> _logger;
         private readonly BackupCli _backupCli;
 
-        private bool isBackupRunning = false;
+        private bool _isBackupRunning;
 
         public Worker(ILogger<Worker> logger, BackupCli backupCli)
         {
@@ -33,7 +33,7 @@ namespace trello_backuper.docker
 
         private async void CronAction()
         {
-            if (isBackupRunning)
+            if (_isBackupRunning)
             {
                 _logger.LogWarning("{time}: Backup already running. Skipping this run...", DateTimeOffset.Now);
                 return;
@@ -41,12 +41,16 @@ namespace trello_backuper.docker
 
             try
             {
-                isBackupRunning = true;
+                _isBackupRunning = true;
+                
                 var appKey = Environment.GetEnvironmentVariable("TRELLO_APP_KEY") ?? throw new ArgumentException("Please provide a valid trello app key. See readme for details.");
                 var token = Environment.GetEnvironmentVariable("TRELLO_TOKEN") ?? throw new ArgumentException("Please provide a valid trello token. See readme for details.");
+                var webHookUrl = Environment.GetEnvironmentVariable("WEB_HOOK_URL");
+                var webHookHttpMethod = Environment.GetEnvironmentVariable("WEB_HOOK_HTTP_METHOD");
 
                 _logger.LogInformation("--> Backup started at {time}", DateTimeOffset.Now);
-                await _backupCli.Run(new[] { "--app-key", appKey, "--token", token, "backup", "/backup" });
+                var cliArguments = CreateCliArguments(appKey, token, webHookUrl, webHookHttpMethod).ToArray();
+                await _backupCli.Run(cliArguments);
                 _logger.LogInformation("--> Backup done at {time}", DateTimeOffset.Now);
             }
             catch (Exception ex)
@@ -55,7 +59,29 @@ namespace trello_backuper.docker
             }
             finally
             {
-                isBackupRunning = false;
+                _isBackupRunning = false;
+            }
+        }
+        
+        private static IEnumerable<string> CreateCliArguments(string appKey, string token, string? webHookUrl, string? webHookHttpMethod)
+        {
+            yield return "--app-key";
+            yield return appKey;
+            yield return "--token";
+            yield return token;
+            yield return "backup";
+            yield return "/backup";
+
+            if (!string.IsNullOrWhiteSpace(webHookUrl))
+            {
+                yield return "--web-hook-url";
+                yield return webHookUrl;
+
+                if (!string.IsNullOrWhiteSpace(webHookHttpMethod))
+                {
+                    yield return "--web-hook-http-method";
+                    yield return webHookHttpMethod;
+                }
             }
         }
     }
