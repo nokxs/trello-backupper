@@ -29,13 +29,16 @@ To see additional options run `trello-backupper backup --help`.
 
 The docker image is available on [DockerHub](https://hub.docker.com/r/liofly/trello-backupper). To run it, three environment variables are necessary:
 
-- `TRELLO_APP_KEY`: The app key retrieved from trello. See first steps section in this readme.
-- `TRELLO_TOKEN`: The token retrieved from trelle. See first steps section in this readme.
-- `CRON`: A Crontab pattern to specify when the backup should run. Tip: Use https://crontab.guru/ to define the pattern.
+- `TRELLO_APP_KEY` (Required): The app key retrieved from trello. See first steps section in this readme.
+- `TRELLO_TOKEN` (Required): The token retrieved from trelle. See first steps section in this readme.
+- `CRON` (Required): A Crontab pattern to specify when the backup should run. Tip: Use https://crontab.guru/ to define the pattern.
+- `WEB_HOOK_URL (Optional): Calls the url at specific events. See web hook section for more details.`
+- `WEB_HOOK_HTTP_METHOD (Optional): Defines the http method used for calling the web hook. See web hook section for more details.`
 
 Backups get stored in `/backup` in the container. Mount it to your local disk for easy access of the backup.
 
 Save the following as `docker-compose.yml` and start it with `docker-compose up -d`. It will start a first backup immediatly and then do a backup every night at 2 AM:
+
 ```yaml
 version: '3.4'
 
@@ -50,3 +53,41 @@ services:
         TRELLO_APP_KEY: "[Your trello app key]"
         CRON: "0 2 * * *"
 ```
+
+## Web Hooks
+
+Both, the dotnet tool and the docker container, have the ability to call a web hook on specific events: 
+
+- The backup is started. Message: `Started backup`
+- The backup is finished. Message: `Finished backup`
+- An error occured during backup. Message: `Error occurred during backup: [error description]`
+
+The specified url will be called as is. To add message details, add `!message!` to your url. It will be subsitute with
+the message text, which is URL encoded.
+
+**Example:** 
+
+The URL 
+
+```
+http://my-server/my/path?value=!message!
+``` 
+
+will be substituted to
+
+```
+http://my-server/my/path?value=Backup%20started
+```
+
+### Http Method
+
+By default http GET is used. See the docs in the dotnet tool or docker section on how to specify the method.
+
+Both allow specifying the following methods:
+
+- GET
+- POST
+- PUT
+- PATCH
+
+The body is always empty.

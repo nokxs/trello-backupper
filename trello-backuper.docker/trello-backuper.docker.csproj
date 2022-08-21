@@ -5,7 +5,7 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <UserSecretsId>dotnet-trello_backuper.docker-EFE0B9A7-169F-42A9-8111-5862CA473037</UserSecretsId>
-    <RootNamespace>trello_backuper.docker</RootNamespace>
+    <RootNamespace>trello.backupper.docker</RootNamespace>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
   </PropertyGroup>
 

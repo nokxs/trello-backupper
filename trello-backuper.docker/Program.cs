@@ -1,6 +1,7 @@
-using trello_backuper.cli;
-using trello_backuper.docker;
-using trello_backuper.lib;
+using trello.backuper.lib;
+using trello.backupper.cli;
+using trello.backupper.cli.WebHook;
+using trello.backupper.docker;
 
 IHost host = Host.CreateDefaultBuilder(args)
     .ConfigureServices(services =>
@@ -9,6 +10,7 @@ IHost host = Host.CreateDefaultBuilder(args)
         services.AddSingleton<BackupCreator>();
         services.AddSingleton<BackupCommand>();
         services.AddSingleton<BackupCli>();
+        services.AddSingleton<WebHookCaller>();
     })
     .Build();
 

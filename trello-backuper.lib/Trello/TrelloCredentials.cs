@@ -1,4 +1,4 @@
-﻿namespace trello_backuper.lib.Trello
+﻿namespace trello.backuper.lib.Trello
 {
     public class TrelloCredentials
     {

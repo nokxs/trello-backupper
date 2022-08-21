@@ -1,6 +1,6 @@
 ﻿using System.CommandLine;
 
-namespace trello_backuper.cli;
+namespace trello.backupper.cli;
 
 public class BackupCli
 {

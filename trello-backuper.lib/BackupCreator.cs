@@ -1,10 +1,10 @@
 ﻿using Markdig;
 using Microsoft.Extensions.Logging;
-using trello_backuper.lib.Holder;
-using trello_backuper.lib.Markdown;
-using trello_backuper.lib.Trello;
+using trello.backuper.lib.Holder;
+using trello.backuper.lib.Markdown;
+using trello.backuper.lib.Trello;
 
-namespace trello_backuper.lib
+namespace trello.backuper.lib
 {
     public class BackupCreator
     {
