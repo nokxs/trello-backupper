@@ -32,8 +32,8 @@ The docker image is available on [DockerHub](https://hub.docker.com/r/liofly/tre
 - `TRELLO_APP_KEY` (Required): The app key retrieved from trello. See first steps section in this readme.
 - `TRELLO_TOKEN` (Required): The token retrieved from trelle. See first steps section in this readme.
 - `CRON` (Required): A Crontab pattern to specify when the backup should run. Tip: Use https://crontab.guru/ to define the pattern.
-- `WEB_HOOK_URL (Optional): Calls the url at specific events. See web hook section for more details.`
-- `WEB_HOOK_HTTP_METHOD (Optional): Defines the http method used for calling the web hook. See web hook section for more details.`
+- `WEB_HOOK_URL` (Optional): Calls the url at specific events. See web hook section for more details.
+- `WEB_HOOK_HTTP_METHOD` (Optional): Defines the http method used for calling the web hook. See web hook section for more details.
 
 Backups get stored in `/backup` in the container. Mount it to your local disk for easy access of the backup.
 
@@ -58,12 +58,12 @@ services:
 
 Both, the dotnet tool and the docker container, have the ability to call a web hook on specific events: 
 
-- The backup is started. Message: `Started backup`
-- The backup is finished. Message: `Finished backup`
-- An error occured during backup. Message: `Error occurred during backup: [error description]`
+- The backup is started. *Message*: `Started backup`
+- The backup is finished. *Message*: `Finished backup`
+- An error occured during backup. *Message*: `Error occurred during backup: [error description]`
 
-The specified url will be called as is. To add message details, add `!message!` to your url. It will be subsitute with
-the message text, which is URL encoded.
+The specified url will be called as is. To add message details, add `!message!` to your url. It will be subsituted with
+the URL encoded message text.
 
 **Example:** 
 
@@ -83,7 +83,7 @@ http://my-server/my/path?value=Backup%20started
 
 By default http GET is used. See the docs in the dotnet tool or docker section on how to specify the method.
 
-Both allow specifying the following methods:
+The following methods are supported:
 
 - GET
 - POST
