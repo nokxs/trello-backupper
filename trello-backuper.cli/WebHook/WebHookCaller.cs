@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using System.Web;
+using Microsoft.Extensions.Logging;
 
 namespace trello.backupper.cli.WebHook;
 
@@ -21,7 +22,7 @@ public class WebHookCaller
 
         try
         {
-            var substitutedUri = data.TargetUri.AbsoluteUri.Replace("$message$", data.Message);
+            var substitutedUri = data.TargetUri.AbsoluteUri.Replace("!message!", HttpUtility.UrlPathEncode(data.Message));
             var finalUri = new Uri(substitutedUri);
             _logger.LogInformation($"Calling {finalUri} with method {data.Method}");
 

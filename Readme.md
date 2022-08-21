@@ -57,11 +57,11 @@ services:
 
 Both, the dotnet tool and the docker container, have the ability to call a web hook on specific events: 
 
-- The backup is started
-- The backup is finished
-- An error occured during backup
+- The backup is started. Message: `Started backup`
+- The backup is finished. Message: `Finished backup`
+- An error occured during backup. Message: `Error occurred during backup: [error description]`
 
-The specified url will be called as is. To add message details, add `$message$` to your url. It will be subsitute with
+The specified url will be called as is. To add message details, add `!message!` to your url. It will be subsitute with
 the message text, which is URL encoded.
 
 **Example:** 
@@ -69,7 +69,7 @@ the message text, which is URL encoded.
 The URL 
 
 ```
-http://my-server/my/path?value=$message$
+http://my-server/my/path?value=!message!
 ``` 
 
 will be substituted to
