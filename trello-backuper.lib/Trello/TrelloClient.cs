@@ -1,4 +1,5 @@
-﻿using System.Net.Http.Headers;
+﻿using System.Net;
+using System.Net.Http.Headers;
 using System.Text.Json;
 using trello.backuper.lib.Trello.Model;
 
@@ -65,11 +66,26 @@ public class TrelloClient
         return new TrelloApiResult<TrelloCardActions>();
     }
 
-    public async Task<TrelloApiResult<TResult>> GetFromApi<TResult>(string apiPath)
+    private async Task<TrelloApiResult<TResult>> GetFromApi<TResult>(string apiPath)
     {
-        var rawJson = await _httpClient.GetStringAsync($"{TrelloApiBaseUrl}/{apiPath}?{GetAuthParameters()}");
-        var result = JsonSerializer.Deserialize<IEnumerable<TResult>>(rawJson, new JsonSerializerOptions(JsonSerializerDefaults.Web)) ?? Enumerable.Empty<TResult>();
-        return new TrelloApiResult<TResult>(rawJson, result);
+        var response = await _httpClient.GetAsync($"{TrelloApiBaseUrl}/{apiPath}?{GetAuthParameters()}");
+        if (response.IsSuccessStatusCode)
+        {
+            var rawJson = await response.Content.ReadAsStringAsync();
+            var result = JsonSerializer.Deserialize<IEnumerable<TResult>>(rawJson, new JsonSerializerOptions(JsonSerializerDefaults.Web)) ?? Enumerable.Empty<TResult>();
+            return new TrelloApiResult<TResult>(rawJson, result);
+        }
+
+        if (response.StatusCode == HttpStatusCode.TooManyRequests)
+        {
+            // according to documentation a delay > 10 seconds should be sufficient
+            // https://developer.atlassian.com/cloud/trello/guides/rest-api/rate-limits/
+            await Task.Delay(TimeSpan.FromSeconds(11));
+            return await GetFromApi<TResult>(apiPath);
+        }
+
+        response.EnsureSuccessStatusCode();
+        return null!; // will never be reached, because IsSuccessStatusCode is always false
     }
 
     public async Task DownloadAttachment(TrelloAttachment attachment, TrelloCredentials credentials, string directory)
